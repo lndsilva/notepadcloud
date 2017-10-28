@@ -13,25 +13,28 @@ public class NotaComponent {
     @Autowired
     NotaRepository notaRepository;
 
-    public void salvar(Nota nota){
+    public void salvar(Nota nota) {
         List<Nota> notas = notaRepository.findByTitulo(nota.getTitulo());
-        if (!notas.isEmpty()){
+        if (!notas.isEmpty()) {
             nota.setId(notas.get(0).getId());
         }
         notaRepository.save(nota);
     }
-    public List<Nota> findAll(){
+
+    public List<Nota> findAll() {
         return notaRepository.findAll();
     }
-    public void deleteAll(){
+
+    public void deleteAll() {
         notaRepository.deleteAll();
     }
-    public Nota buscarNota(String titulo){
+
+    public Nota buscarNota(String titulo) {
         Nota nota;
         List<Nota> notas = notaRepository.findByTitulo(titulo);
-        if (notas.isEmpty()){
-            return  new Nota();
-        }else{
+        if (notas.isEmpty()) {
+            return new Nota();
+        } else {
             return notas.get(0);
         }
     }
