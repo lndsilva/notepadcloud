@@ -14,7 +14,7 @@ public class NotaController {
     @Autowired
     public NotaComponent notaComponent;
 
-    @GetMapping("/titulo/(titulo)")
+    @GetMapping("/titulo/{titulo}")
     public Nota buscaNota(@PathVariable(value = "titulo") String titulo) {
         return notaComponent.buscarNota(titulo);
     }
